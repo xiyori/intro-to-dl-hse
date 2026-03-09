@@ -52,13 +52,12 @@
 12. Соревновательные атаки, генеративно-состязательные сети (GANs): [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/seminars/232/seminar-12-adversarial.ipynb)
 13. Вариационный автокодировщик: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/seminars/232/seminar-13-vae.ipynb)
 
-TBA
-
 ## Маленькие домашние задания
 
 1. Автоматическое дифференцирование и полносвязные нейронные сети: [ссылка](https://github.com/xiyori/intro-to-dl-hse/tree/2025-2026/homeworks-small)
 2. Сверточный классификатор: [ссылка](https://github.com/xiyori/intro-to-dl-hse/tree/2025-2026/homeworks-small/shw-02-cnn.ipynb)
 3. RNN и языковые модели: [ссылка](https://github.com/xiyori/intro-to-dl-hse/tree/2025-2026/homeworks-small/shw-03-rnn) 
+4. **(бонус)** Обучение модели CLIP: [ссылка](https://github.com/xiyori/intro-to-dl-hse/tree/2025-2026/homeworks-small/shw-04-ssl-bonus)
 
 ## Теоретические домашние задания
 
