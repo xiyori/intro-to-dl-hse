@@ -25,6 +25,7 @@
 1. Метод обратного распространения ошибки, полносвязные нейронные сети: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-01-mlp.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-01-mlp.pdf)
 2. Кросс-энтропийная функция потерь, регуляризации: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-02-dropout-batchnorm.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-02-dropout-batchnorm.pdf)
 3. Оптимизация нейронных сетей: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-03-optimization.pdf)
+4. Операция свертки: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-04-convolution.pdf)
 
 ## Семинары
 0. Введение в библиотеку PyTorch. Автоматическое дифференцирование: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-01-intro.ipynb)
