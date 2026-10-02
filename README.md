@@ -26,6 +26,7 @@
 2. Кросс-энтропийная функция потерь, регуляризации: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-02-dropout-batchnorm.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-02-dropout-batchnorm.pdf)
 3. Оптимизация нейронных сетей: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-03-optimization.pdf)
 4. Операция свертки: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-04-convolution.pdf)
+5. Сверточные архитектуры: [слайды](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-05-cnn.pdf)
 
 ## Семинары
 0. Введение в библиотеку PyTorch. Автоматическое дифференцирование: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-01-intro.ipynb)
@@ -41,3 +42,4 @@
 Теоретические ДЗ не сдаются и предлагаются студентам для самостоятельного решения и ознакомления
 
 1. Полносвязные нейронные сети: [ссылка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/homeworks-theory/thw-01-mlp.pdf)
+2. Сверточные нейронные сети: [ссылка](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/homeworks-theory/thw-02-cnn.pdf)
