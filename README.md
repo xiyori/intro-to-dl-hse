@@ -29,6 +29,7 @@
 5. Сверточные архитектуры: [слайды](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-05-cnn.pdf)
 6. Задачи компьютерного зрения: [слайды](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-06-cv.pdf)
 7. Токенизация, эмбеддинги: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-07-embeddings.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-07-embeddings.pdf)
+8. Рекуррентные нейронные сети: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-08-rnn.pdf)
 
 ## Семинары
 0. Введение в библиотеку PyTorch. Автоматическое дифференцирование: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-00-intro.ipynb)
