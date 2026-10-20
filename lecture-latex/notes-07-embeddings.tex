@@ -1,0 +1,710 @@
+\documentclass[12pt]{article}
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{epigraph}
+\usepackage{textcomp}
+
+\usepackage[russian,colorlinks=true,urlcolor=red,linkcolor=blue]{hyperref}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{datetime}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{arrows,patterns,decorations.markings,decorations.pathmorphing,decorations.pathreplacing}
+\usetikzlibrary{math,positioning}
+\usepackage{pgfplots}
+
+\usepackage{ifthen}
+\usepackage{mathtools}
+\usepackage{mdframed}
+\usepackage[normalem]{ulem}
+
+\def\SEASON{2024/25}
+
+
+\sloppy
+\voffset=-20mm
+\textheight=235mm
+\hoffset=-22mm
+\textwidth=180mm
+\headsep=12pt
+\footskip=20pt
+
+\parskip=0em
+\parindent=0em
+
+\setlength\epigraphwidth{.8\textwidth}
+
+\newlength{\tmplen}
+\newlength{\tmpwidth}
+\newlength{\storelen}
+\newcounter{listcounter}
+
+% Список с маленькими отступами
+\newenvironment{MyList}[1][4pt]{
+  \begin{enumerate}[1.]
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{#1}
+}{       
+  \end{enumerate}
+}
+% Вложенный список с маленькими отступами
+\newenvironment{InnerMyList}[1][0pt]{
+  \vspace*{-0.5em}
+  \begin{enumerate}[(a)]
+  \setlength{\parskip}{-0pt}
+  \setlength{\itemsep}{#1}
+}{       
+  \end{enumerate}
+  \vspace*{-0.5em}
+}
+% Список с маленькими отступами
+\newenvironment{MyItemize}[1][4pt]{
+  \begin{itemize}
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{#1}
+}{       
+  \end{itemize}
+}
+
+% Основные математические символы
+\def\TODO{{\color{red}\bf TODO}}
+\def\N{\mathbb{N}}       %
+\def\R{\mathbb{R}}       %
+\def\F2{\mathbb{F}_2}    %
+\def\Z{\mathbb{Z}}       %
+\def\H{\mathcal{H}}      % семество хеш-функций
+\def\E{\mathsf{E}}       % матожидание
+\def\INF{\infty}    % +inf
+\def\EPS{\varepsilon}    %
+\def\EMPTY{\varnothing}  %
+\def\PHI{\varphi}        %
+\def\SO{\Rightarrow}     % =>
+\def\EQ{\Leftrightarrow} % <=>
+\def\t{\texttt}          % mono font
+\def\c#1{{\rm\sc{#1}}}   % font for classes NP, SAT, etc
+\def\O{\mathcal{O}}      %
+\def\NO{\t{\#}}          % #
+\def\XOR{\text{ {\raisebox{-2pt}{\ensuremath{\Hat{}}}} }}
+\def\xor{\t{\^{}}}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\q}[1]{\langle #1 \rangle}               % <x>
+\newcommand\URL[1]{{\footnotesize{\url{#1}}}}        %
+\newcommand{\sfrac}[2]{{\scriptstyle\frac{#1}{#2}}}  % Очень маленькая дробь
+\newcommand{\mfrac}[2]{{\textstyle\frac{#1}{#2}}}    % Небольшая дробь
+\newcommand{\score}[1]{{\bf\color{red}{(#1)}}}
+\newcommand{\divby}{\mathop{\raisebox{-2pt}{\vdots}}}
+
+\newcommand{\fix}[1]{{\color{fixcolor}{#1}}} % \underline
+\def\bonus{\t{\red{(*)}}}
+\def\ifbonus#1{\ifthenelse{\equal{#1}{}}{}{\bonus}}
+\def\smallsquare{$\scalebox{0.5}{$\square$}$}
+\def\vstick{^\t{\textquotesingle}}
+\def\bluebox#1{\fcolorbox{blue}{white}{#1}}
+
+\newlength{\myItemLength}
+\setlength{\myItemLength}{0.3em}
+\def\ItemSymbol{\smallsquare}
+\def\Item{\vspace*{\myItemLength}\ItemSymbol \ \ }
+
+\newcommand{\LET}{%
+  % [line width=0.6pt]
+  \begin{tikzpicture}%
+  \draw(0.8ex,0) -- (0.8ex,1.6ex);%
+  \draw(0,1.6ex) -- (0.8ex,1.6ex);%
+  \end{tikzpicture}%
+  \hspace*{0.1em}%
+}
+
+% Отступы
+\def\makeparindent{\hspace*{\parindent}\unskip}
+\def\up{\vspace*{-0.5em}}%{\vspace*{-\baselineskip}}
+\def\down{\vspace*{0.5em}}
+\def\LINE{\vspace*{-1em}\noindent \underline{\hbox to 1\textwidth{{ } \hfil{ } \hfil{ } }}}
+\def\BOX#1{\mbox{\fbox{\bf{#1}}}}
+\def\Pagebreak{\pagebreak\vspace*{-1.5em}}
+\def\RIGHT{\hspace*{\fill}} % сдвинуться до упора вправо
+\def\NewLine{\hspace*{1em}\\}
+
+% Мелкий заголовок
+\newcommand{\THEE}[1]{
+  \vspace*{0.5em}
+  \noindent{\bf \underline{#1}}%\hspace{0.5em}
+  \vspace*{0.2em}
+}
+% Другой тип мелкого заголовка
+\newcommand{\THE}[1]{
+  \vspace*{0.5em} $\bullet$
+  \noindent{\bf #1}%\hspace{0.5em}
+  \vspace*{0.2em}
+}
+
+\newenvironment{MyTabbing}{
+  \t\bgroup
+  \vspace*{-\baselineskip}
+  \begin{tabbing}
+    aaaa\=aaaa\=aaaa\=aaaa\=aaaa\=aaaa\kill
+}{
+  \end{tabbing}
+  \t\egroup
+}
+
+% Код с правильными отступами
+\lstnewenvironment{code}{
+  \lstset{}
+%  \vspace*{-0.2em}
+}%
+{
+%  \vspace*{-0.2em}
+}
+\lstnewenvironment{codep}{
+  \lstset{language=python}
+}%
+{
+}
+% Код, содержащий выскоие формулы, вставить не так просто...
+\def\codeinput#1{
+  \begin{mdframed}[innertopmargin=-2pt,innerbottommargin=-2pt,innerleftmargin=4pt,backgroundcolor=lightgray]
+  \lstinputlisting[frame={}]{#1}
+  \end{mdframed}
+}
+
+% Формулы с правильными отступами
+\newenvironment{smallformula}{
+ 
+  \vspace*{-0.8em}
+}{
+  \vspace*{-1.2em}
+  
+}
+\newenvironment{formula}{
+ 
+  \vspace*{-0.4em}
+}{
+  \vspace*{-0.6em}
+  
+}
+
+% Большая квадратная скобка
+\makeatletter
+\newenvironment{sqcases}{%
+  \matrix@check\sqcases\env@sqcases
+}{%
+  \endarray\right.%
+}
+\def\env@sqcases{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrack
+  \def\arraystretch{1.2}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+% Определяем основные секции: \begin{Lm}, \begin{Thm}, \begin{Def}, \begin{Rem}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\theoremstyle{definition} % жирный заголовок, плоский текст
+\newtheorem{Thm}{Th}[subsection] % нумерация будет "<номер subsection>.<номер теоремы>"
+\newtheorem{Lm}[Thm]{Lm} % Нумерация такая же, как и у теорем
+\newtheorem{Ex}[Thm]{Упражнение} % Нумерация такая же, как и у теорем
+\newtheorem{Example}[Thm]{Пример} % Нумерация такая же, как и у теорем
+\newtheorem{Code}[Thm]{Код} % Нумерация такая же, как и у теорем
+\theoremstyle{plain} % жирный заголовок, курсивный текст
+\newtheorem{Def}[Thm]{Def} % Нумерация такая же, как и у теорем
+\newtheorem{Algo}[Thm]{Алгоритм} % Нумерация такая же, как и у теорем
+\theoremstyle{remark} % курсивный заголовок, плоский текст
+\newtheorem{Cons}[Thm]{Следствие} % Нумерация такая же, как и у теорем
+\newtheorem{Conj}[Thm]{Гипотеза} % Нумерация такая же, как и у теорем
+\newtheorem{Prop}[Thm]{Утверждение} % Нумерация такая же, как и у теорем
+\newtheorem{Rem}[Thm]{Замечание} % Нумерация такая же, как и у теорем
+\newtheorem{Remark}[Thm]{Замечание} % Нумерация такая же, как и у теорем
+\newtheorem{Img}[Thm]{Иллюстрация} % Нумерация такая же, как и у теорем
+
+\def\SectionName{Название секции}
+\def\AuthorName{Тихонов Даниил}
+
+\newlength{\sectionvskip}
+\setlength{\sectionvskip}{0.5em}
+\newcommand{\Section}[5][]{
+  % Заголовок
+  \pagebreak
+%  \ifthenelse{\isempty{#1}}{
+    \refstepcounter{section}
+%  }{}
+  \vspace{0.5em}
+%  \ifthenelse{\isempty{#1}}{
+%    \addtocontents{toc}{\protect\addvspace{-5pt}}%
+    \addcontentsline{toc}{section}{\arabic{section}. #2}
+%  }{}
+  \begin{center}
+    {\Large \bf Лекция \NO{#4}: #2} \\ 
+    \vspace{\sectionvskip}
+    \ifthenelse{\equal{#3}{}}{}{{\large #3}\\}
+    % {\large #3} \\
+  \end{center}
+
+  \LINE
+
+  % Запомнили название и автора главы
+  \gdef\SectionName{#2}
+  \gdef\AuthorName{#4}
+
+  % Заголовок страницы
+  \lhead{Глубинное обучение 1, \SEASON}
+  \chead{}
+  \rhead{ФКН ВШЭ}
+  \renewcommand{\headrulewidth}{0.4pt}
+
+  \lfoot{Лекция \NO{#4}. #3.}
+  \cfoot{\thepage\t{/}\pageref*{LastPage}}
+  \rfoot{Лектор: Шипилов Фома}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\newcommand{\Subsection}[2][]{
+  \refstepcounter{subsection}
+  \vspace*{1em}
+  \ifthenelse{\equal{#1}{}}
+    {\addcontentsline{toc}{subsection}{\arabic{section}.\arabic{subsection}. #2}}
+    {\addcontentsline{toc}{subsection}{\arabic{section}.\arabic{subsection}. \bonus\,#2}}
+  {\color{blue}\bf\large \arabic{section}.\arabic{subsection}. \ifbonus{#1}\,{#2}} 
+  \vspace*{0.5em}
+  \makeparindent
+}
+\newcommand{\Subsubsection}[2][]{
+  \refstepcounter{subsubsection}
+  \vspace*{1em}
+  \ifthenelse{\equal{#1}{}}
+    {\addcontentsline{toc}{subsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}. #2}}
+    {\addcontentsline{toc}{subsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}. \bonus\,#2}}
+  {\color{blue}\bf\large \arabic{section}.\arabic{subsection}.\arabic{subsubsection}. \ifbonus{#1}\,#2}
+  \vspace*{0.5em}
+  \makeparindent
+}
+
+\newcommand{\Header}{
+  \pagestyle{empty}
+  \renewcommand{\dateseparator}{--}
+  \begin{center}
+    {\Large\bf 
+     ФКН ВШЭ\\
+     %Первый курс, \SEASON\\
+    \vspace{0.3em}
+    Глубинное обучение 1, \SEASON}\\
+    \vspace{0.7em}
+    Автор конспекта: Даниил Тихонов \\
+    \vspace{0.7em}
+    {{\today} в {\currenttime}}
+  \end{center}
+
+  \LINE
+  \vspace{0em}
+
+  \renewcommand{\baselinestretch}{0.98}\normalsize
+  \tableofcontents
+  \renewcommand{\baselinestretch}{1.0}\normalsize
+  \pagebreak
+}
+
+\newcommand{\BeginConspect}{
+  \pagestyle{fancy}
+  \setcounter{page}{1}
+}
+
+\def\Bibliography#1#2#3{\href{#1}{\t{[#2]}}. #3}
+\def\Link#1#2#3{\href{#1}{\t{[#2]}}. #3}
+\def\ShortLink#1#2{\href{#2}{\t{[#1]}}}
+
+\definecolor{mygray}{rgb}{0.7,0.7,0.7}
+\definecolor{ltgray}{rgb}{0.9,0.9,0.9}
+\definecolor{fixcolor}{rgb}{0.7,0,0}
+\definecolor{red2}{rgb}{0.7,0,0}
+\definecolor{dkred}{rgb}{0.4,0,0}
+\definecolor{dkblue}{rgb}{0,0,0.6}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{brown}{rgb}{0.5,0.5,0}
+
+\newcommand{\green}[1]{{\color{green}{#1}}}
+\newcommand{\black}[1]{{\color{black}{#1}}}
+\newcommand{\red}[1]{{\color{red}{#1}}}
+\newcommand{\dkred}[1]{{\color{dkred}{#1}}}
+\newcommand{\blue}[1]{{\color{blue}{#1}}}
+\newcommand{\dkgreen}[1]{{\color{dkgreen}{#1}}}
+
+
+\setlength\parindent{20pt} 
+
+\begin{document}
+
+\Header
+\BeginConspect
+
+\Section{Введение в работу с последовательностями}{25 ноября}{7}
+
+\Subsection{Последовательности}
+
+Чаще всего под последовательностями подразумеваются тексты, но есть и множество других форматов данных, которые можно представить в таком виде:
+
+\begin{itemize}
+    \item Последовательность кадров -- видео
+    \item Последовательность звукового давления -- музыка
+    \item Последовательность значений во времени -- временной ряд
+\end{itemize}
+
+Далее для простоты восприятия будем говорить про тексты. При работе с ними возникают две проблемы, которых не было в прежде рассмотренных задачах. \\
+
+Во-первых, нейросети привыкли работать с непрерывными значениями, а значит, каждый текст нужно уметь переводить в такое представление. В отличие от картинок, где значения пикселей хоть и являются целыми, но их величина имеет физический смысл, их можно сравнивать. Если же, например, рассмотреть текст как последовательность символов, то обычная кодировка по типу ASCII или Unicode не имеет никакого внутреннего смысла. \\
+
+Во-вторых, тексты обладают переменной длиной. Сравнивая с теми же картинками, есть множество методов интерполяции изображений в нужный размер, которые сохраняют контент. Масштабирование текста уже не очень очевидно. В случае сжатия текста, возможно, еще и можно придумать адекватные эвристики по типу простого обрезания последовательности по нужному количеству символов, а как увеличить текст совсем непонятно. \\
+
+Таким образом, главной задачей является придумать разумное кодирование текста и научить модель работать с последовательностями произвольной длины.
+
+\Subsection{Формальная постановка}
+
+Пусть имеется некоторая последовательность $w_1, \dots, w_T$ (например, слова или символы). Далее эта последовательность произвольных сущностей преобразуется в последовательность токенов $t_1, \dots, t_L$, где $t_i \in \text{Vocab}$ -- фиксированное множество, называемое \textbf{словарем}. Важно заметить, что длина новой последовательности зависит от способа токенизации и может как увеличиться, так и уменьшиться. \\
+
+Токены все еще являются элементами дискретного множества, поэтому каждому из них нужно поставить в соответствие некоторое информативаное векторное представление, называемое \textbf{эмбеддингом}: $t_i \mapsto e_i \in \R^d$. Размерность эмбеддингов $d$ является гиперпараметром и фиксируется заранее для всех токенов (обычно $d \in \{64, \,128,\, 256\}$). В дальнейшем эти эмбеддинги и будут подаваться в качестве входа для нейросети. \\
+
+\pagebreak
+
+Есть несколько основных подходов к построению эмбеддингов для токенов:
+\begin{itemize}
+    \item Можно взять заранее предобученные на другой задаче с большим объемом данных эмбеддинги и использовать их для оптимизации модели. Это хороший путь, если имеющийся датасет не очень большой, а смежная задача не ортогональна нашей.
+    \item Если же имеется сразу много данных, то эмбеддинги можно обучать как часть модели.
+\end{itemize}
+
+Наконец, получили полный пайплайн обучения, рассмотрим каждый этап подробнее.
+\[
+\text{Sequence}\, \longrightarrow \, \text{Tokens}\, \longrightarrow \text{Embeddings}\, \longrightarrow \, \text{Model} 
+\]
+
+\Subsection{Токенизация}
+
+Рассмотрим некоторые способы токенизации на примере строки на русском языке
+\[
+\textit{На дворе трава, на траве дрова.}
+\]
+
+\begin{itemize}
+    \item \fbox{\begin{minipage}{0,155\textwidth} Character-level \end{minipage}} -- каждый символ является отдельным токеном (в том числе и все знаки препинания и пробелы):
+    \[
+    \textit{|Н|а| |д|в|о|р|е| |т|р|а|в|а|,| |н|а| |т|р|а|в|е| |д|р|о|в|а|.|}
+    \]
+    \begin{enumerate}
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Новые слова легко кодируются.
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Известный и очень маленький словарь: мало эмбеддингов $\Rightarrow$ легко оптимизировать.
+        \item[\textbf{\textcolor{red}{($-$)}}]
+        Теряется структура языка: связь символов, их комбинации и лексический смысл.
+        \item[\textbf{\textcolor{red}{($-$)}}]
+        Последовательность токенов для большинства текстов будет очень длинной.
+    \end{enumerate}
+    \item \fbox{\begin{minipage}{0,11\textwidth} Word-level \end{minipage}} -- каждое слово является отдельным токеном (пробелы не считаются, но знаки препинания являются отдельными словами):
+    \[
+    \textit{|На|дворе|трава|,|на|траве|дрова|.|}
+    \]
+    \begin{enumerate}
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Сохраняется семантическая информация о языке.
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Короткие последовательности токенов. 
+        \item[\textbf{\textcolor{red}{($-$)}}]
+        Очень большой словарь (особенно для языков, где есть окончания или спряжения).
+        \item[\textbf{\textcolor{red}{($-$)}}]
+        Сложно кодировать новые слова. \\
+        
+        Для того, чтобы можно было кодировать слова, которых нет в словаре, вводится специальный токен $\langle$UNK$\rangle$, отвечающий за неизвестные слова.\\
+        
+        Например, в целях экономии ресурсов словарь должен быть ограничен $N$ словами. Тогда можно взять самые часто встречающиеся $N - K$ слов по обучающей выборке, а остальные заменить данным токеном ($K$ -- количество специальных токенов).
+    \end{enumerate}
+
+    \pagebreak 
+    
+    \item \fbox{\begin{minipage}{0,14\textwidth} Subword-level \end{minipage}} -- токенизируются подслова. Рассмотрим один из примеров: \\
+
+    \textbf{Byte-pair encoding (BPE).} 
+
+    Построение словаря фиксированного размера $N$ происходит итеративно:
+    \begin{enumerate}
+        \item[\textbf{1.}]
+        Начинаем с посимвольной токенизации.
+        \item[\textbf{2.}]
+        Находим самую часто встречающуюся вместе пару токенов в тексте (порядок важен!).
+        \item[\textbf{3.}]
+        Добавляем конкатенацию самой частой пары в словарь, не удаляя прежние токены.
+        \item[\textbf{4.}]
+        Если текущий размер словаря $< N$, переходим в пункту $\textbf{(2)}$.
+    \end{enumerate}
+
+    Рассмотрим несколько шагов на примере нашей строки (пробелы игнорируются):
+    \begin{itemize}
+        \item[] \textbf{Шаг 0: }
+        \[
+        \text{Vocab}_0 = \{\textit{Н, а, д, в, о, р, е, т, н, ',', '.'}\}
+        \]
+        \[
+        \textit{|Н|а| |д|в|о|р|е| |т|р|а|в|а|,| |н|а| |т|р|а|в|е| |д|р|о|в|а|.|}
+        \]
+        \item[] \textbf{Шаг 1: }
+        \[
+        \text{Vocab}_1 = \{\textit{Н, а, д, в, о, р, е, т, н, ',', '.', тр}\}
+        \]
+        \[
+        \textit{|Н|а| |д|в|о|р|е| |тр|а|в|а|,| |н|а| |тр|а|в|е| |д|р|о|в|а|.|}
+        \]
+        \item[] \textbf{Шаг 2: }
+        \[
+        \text{Vocab}_2 = \{\textit{Н, а, д, в, о, р, е, т, н, ',', '.', тр, тра}\}
+        \]
+        \[
+        \textit{|Н|а| |д|в|о|р|е| |тра|в|а|,| |н|а| |тра|в|е| |д|р|о|в|а|.|}
+        \]
+        \item[] \textbf{Шаг 3: }
+        \[
+        \text{Vocab}_3 = \{\textit{Н, а, д, в, о, р, е, т, н, ',', '.', тр, тра, трав}\}
+        \]
+        \[
+        \textit{|Н|а| |д|в|о|р|е| |трав|а|,| |н|а| |трав|е| |д|р|о|в|а|.|}
+        \]
+    \end{itemize}
+
+    В реальных текстах токены будут разнообразнее и словарь будет состоять из самых часто встречающихся \textbf{n-грамм} (последовательностей из $n$ символов).
+
+    \begin{enumerate}
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Словарь создается динамически на основе данных, а не волевых решениях.
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Все часто встречающиеся комбинации будут объединены в токены и нести семантическую информацию о языке.
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Новые/редкие слова будут токенизироваться, так как все символы есть в словаре.
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Легко контролируемый размер словаря.
+    \end{enumerate}
+
+    На первый взгляд кажется, что все это будет считать долго для больших текстов. На самом деле, в любом случае bottleneck-ом будет обучение модели, поэтому потерпим. \\
+
+    По своей сути этот подход является неким средним между двумя рассмотренными ранее методами, сохраняя самые лучшие их свойства.
+
+    \pagebreak
+
+\end{itemize}
+
+Следующим шагом после получения токенизированной последовательности и формирования словаря необходимо получить векторные представления для каждого токена.
+
+\Subsection{Эмбеддинги}
+
+Рассмотрим процесс обучения эмбеддингов на примере подхода \textbf{Word2Vec}, где в первоначальной постановке токенами являются сами слова. \\
+
+Пусть дана некоторая последовательность слов $w_1, \dots, w_T$. Для каждого слова $w_i$ определим его контекст длины $K$ как множество слов $\mathring{N}(w_i) = \{w_j: |i - j| \leq K, \, i \neq j\}$.
+\[
+w_1, \underbrace{\textcolor{orange}{w_2}, \textcolor{orange}{w_3}, \fbox{\begin{minipage}{0,025\textwidth} $w_4$ \end{minipage}}, \textcolor{orange}{w_5}, \textcolor{orange}{w_6},} w_7, w_8, \, \dots \quad\quad i = 4, \, K = 2
+\]
+
+Заведем две матрицы эмбеддингов $U, \, V \in \R^{N \times d}$, где $N$ -- размер словаря, а $d$ -- размер эмбеддингов. Вся разница лишь в том, что в матрице $U$ лежат контекстные эмбеддинги токена, а в матрице $V$ -- центральные. Следовательно, каждому токену $t_i \in \text{Vocab}$ соответствуют два эмбеддинга: один в качестве контекстного токена ($i$-ая строка матрицы $U$), другой в качестве центрального ($i$-ая строка матрицы $V$). Изначально $U$ и $V$ инициализированны случайно.
+\[
+U = 
+\begin{pmatrix}
+    \fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, u_1$ \end{minipage}} \\
+    \dots  \dots  \dots \dots \\
+    \dots  \dots  \dots \dots \\
+    \fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, u_i$ \end{minipage}} \\
+    \dots  \dots  \dots \dots \\
+    \dots  \dots  \dots \dots \\
+    \fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, u_N$ \end{minipage}} \\
+\end{pmatrix}, \,\,
+V = 
+\begin{pmatrix}
+    \fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, v_1$ \end{minipage}} \\
+    \dots  \dots  \dots \dots \\
+    \dots  \dots  \dots \dots \\
+    \fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, v_i$ \end{minipage}} \\
+    \dots  \dots  \dots \dots \\
+    \dots  \dots  \dots \dots \\
+    \fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, v_N$ \end{minipage}} \\
+\end{pmatrix}
+\]
+\[
+t_i \in \text{Vocab} \Rightarrow \textit{CentralEmbedding}\,(t_i) = u_i, \, \textit{ContextEmbedding}\,(t_i) = v_i \in \R^d
+\]
+
+Нашей целью является обучить эмбеддинги так, чтобы они содержали информацию о внутреннем устройстве языка. Для Word2Vec есть две такие задачи, рассмотрим их на примере контекста слова $w_4$ выше (в общем случае $K$ может быть другим!):
+
+\begin{itemize}
+    \item \textbf{Skip-gram.} \\
+    
+    Модель обучается на предсказание вероятности встретить слово в контексте какого-то центрального слова:
+    \[
+    \mathbb{P}(\textcolor{orange}{w_2} \,|\, w_4), \, \mathbb{P}(\textcolor{orange}{w_3} \,|\, w_4), \, \mathbb{P}(\textcolor{orange}{w_5} \,|\, w_4), \, \mathbb{P}(\textcolor{orange}{w_6} \,|\, w_4)
+    \]
+
+    В качестве близости двух слов возьмем скалярное произведение соответствующих эмбеддингов. Так как модель должна выдавать вектор вероятностей, в общем случае
+    \[
+    \mathbb{P}(w \,|\, w_i) = \text{SoftMax}
+    \left(
+    \begin{bmatrix}
+        \langle u_1, v_i \rangle \\
+        \dots \dots \\
+        \langle u_j, v_i \rangle \\
+        \dots \dots \\
+        \langle u_N, v_i \rangle \\
+    \end{bmatrix}
+    \right)
+    =
+    \begin{bmatrix}
+        \mathbb{P}(w_1 \,|\, w_i) \\
+        \dots \dots \\
+        \mathbb{P}(w_j \,|\, w_i)  \\
+        \dots \dots \\
+        \mathbb{P}(w_N \,|\, w_i)  \\
+    \end{bmatrix}
+    \]
+
+    \pagebreak
+
+    Теперь можно пройтись скользящим окном по всему тексту из обучаемой выборки и собрать большое количество объектов. То есть задача свелась к классификации:
+
+    \[
+    \mathcal{L} = - \sum_{\substack{\text{center } w_j \\ \text{context } w_i}} \log \mathbb{P}(w_i \,|\, w_j) = - \sum_{\substack{\text{center } w_j \\ \text{context } w_i}} \log \left(\frac{\exp \langle u_i, v_j \rangle }{\sum_{k=1}^N \exp \langle u_k, v_j \rangle}\right) \longrightarrow \min_{U, \, V}
+    \]
+    
+    \item \textbf{Continuous Bag of Words (CBOW).} \\
+    
+    Модель обучается на предсказание вероятностни встретить слово в качестве центрального при условии какого-то контекста:
+    \[
+    \mathbb{P}(w_4 \,|\, \textcolor{orange}{w_2}, \textcolor{orange}{w_3}, \textcolor{orange}{w_5}, \textcolor{orange}{w_6})
+    \]
+    В качестве эмбеддинга контекста размера $K$ слова $w_i$ тут выступает просто сумма
+    \[
+    \text{Context}(w_i) = u_{i - K} + \dots + u_{i - 1} + u_{i + 1} + \dots + u_{i + K}
+    \]
+    В остальном все как в skip-gram -- теперь у нас есть один эмбеддинг контекста и один эмбеддинг центрального слова $\Rightarrow$ считаем скалярное произведение:
+    \[
+    \mathbb{P}(w \,|\, w_{i - K}, \dots, w_{i - 1}, w_{i + 1}, \dots, w_{i + K}) = 
+    \]
+    \[
+    =
+    \text{SoftMax}
+    \left(
+    \begin{bmatrix}
+        \langle v_1, \text{Context}(w_i) \rangle \\
+        \dots \dots \dots \dots \dots \\
+        \langle v_j, \text{Context}(w_i) \rangle \\
+        \dots \dots \dots \dots \dots \\
+        \langle v_N, \text{Context}(w_i) \rangle \\
+    \end{bmatrix}
+    \right)
+    =
+    \begin{bmatrix}
+        \mathbb{P}(w_1 \,|\, w_{i - K}, \dots, w_{i - 1}, w_{i + 1}, \dots, w_{i + K}) \\
+        \dots \dots \dots \dots \dots \dots \dots \dots \dots \dots \dots \dots \\
+        \mathbb{P}(w_j \,|\, w_{i - K}, \dots, w_{i - 1}, w_{i + 1}, \dots, w_{i + K})  \\
+        \dots \dots \dots \dots \dots \dots \dots \dots \dots \dots \dots \dots \\
+        \mathbb{P}(w_N \,|\, w_{i - K}, \dots, w_{i - 1}, w_{i + 1}, \dots, w_{i + K})  \\
+    \end{bmatrix}
+    \] \\
+    Дальнейшие действия идентичны skip-gram: проходимся окном по тексту, набираем объекты для обучения и решаем задачу классификации. \\
+    
+\end{itemize}
+
+    \textbf{Однако возникает проблема}: все это будет обучаться, но очень долго. При подсчете вероятностей и лосса необходимо считать суммы вида
+    \[
+    {\sum_{k=1}^N \exp \langle u_k, v_i \rangle},
+    \]
+    то есть проходить по всему словарю. Хотелось бы считать такое без полного прохода. \\
+
+    Этого можно решить переходом от задачи многоклассовой классификации к бинарной:
+    \[
+    \mathbb{P}(w_i \text{ из контекста } w_j) = \sigma(\langle u_i, v_j \rangle)
+    \]
+    \[
+    \mathcal{L} = - \sum_{\substack{\text{center } w_j \\ \text{context } w_i}} \log \mathbb{P}(w_i \text{ из контекста } w_j) = - \sum_{\substack{\text{center } w_j \\ \text{context } w_i}} \log \sigma(\langle u_i, v_j \rangle) \longrightarrow \min_{U, \, V}
+    \]
+
+    \pagebreak
+
+    \textbf{Утверждение.} Теперь это вообще не будет учиться, ведь мы обучаем модель лишь на положительных парах, которые встречаются вместе (то есть только на положительном классе) $\Rightarrow$ ей выгодно обучить эмбеддинги так, чтобы скалярное произведение любых двух было максимально возможным. \\
+
+    Эта проблема решается довольно просто с помощью \textbf{negative sampling:} помимо положительных пар будем обучать модель и на отрицательных, то есть
+    \[
+    \mathcal{L}  = - \sum_{\substack{\text{center } w_j \\ \text{context } w_i}} \log \sigma(\langle u_i, v_j \rangle) \,\, - \sum_{\substack{w_i, w_j \\ \text{negative pair}}} \log\left(1-\sigma(\langle u_i, v_j \rangle)\right) \longrightarrow \min_{U, \, V}
+    \]
+
+    Есть множество способов семплировать отрицательные пары:
+
+    \begin{itemize}
+        \item В качестве отрицательной пары брать случайную пару слов -- с большой вероятностью они не попадут друг к другу в контекст (при условии большого датасета)
+        \item Можно делать сложные подсчеты статистик. Например, частоту взаимовстречаемости всех пар слов, чтобы потом при выборе отрицательной пары ориентироваться на это.
+    \end{itemize}
+
+    Говоря о балансе положительных и отрицательных пар, вторых как правило требуется сильно больше. В подобных задачах negative sampling выступает в роли регуляризации, то есть полученные эмбеддинги будут лучше обобщаться. \\
+
+    Для обучения таких матриц эмбеддингов $U$ и $V$ в торче есть модуль $\texttt{nn.Embedding}$, который представляет из себя буквально то, что нужно: $\texttt{nn.Embedding[i]} = \text{Embedding}\,(t_i) \in \R^d$. \\
+
+    После обучения в качестве эмбеддингов можно взять одну из матриц $U, \, V$ или $\frac{1}{2}(U + V)$. \\
+
+    Магия заключается в том, что обучаясь лишь на какие-то статистические признаки в обычных текстах, модель выучивает внутреннюю семантику языка, хотя напрямую этому не училась!
+    \[
+    v_{\text{man}} - v_{\text{king}} \approx v_{\text{woman}} - v_{\text{queen}}
+    \]
+
+    Считается, что CBOW дает хорошие эмбеддинги для часто встречающихся слов, тогда как skip-gram -- для редко встречающихся. Однако в целом Word2Vec является довольно древней вещью и с ним есть проблема -- невозможность получения эмбеддинга новых слов. 
+
+\Subsection{FastText}
+
+FastText улучшает подход skip-gram. Идея в том, чтобы оптимизировать вероятности не только для самих слов, но и для их $n$-грамм:
+\[
+\mathbb{P}(\text{дрова} \,|\, \text{трава}) \longrightarrow \max \quad \quad  \quad  \quad   \quad \quad \quad \quad\Leftarrow \text{ skip-gram}
+\]
+\[
+\text{трава} \longrightarrow \{\text{тр, тра, рав, ава, ва} \}
+\]
+\[
+\mathbb{P}(\text{дрова} \,|\, \text{тр}),\,\dots, \,\mathbb{P}(\text{дрова} \,|\, \text{ва}) \longrightarrow \max \quad \Leftarrow \text{ FastText}
+\]
+
+\pagebreak
+
+\begin{enumerate}
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Возможность построить эмбеддинги для новых слов.
+        \item[\textbf{\textcolor{green}{($+$)}}]
+        Обмен информации между разными словами (так как содержат одинаковые $n$-граммы).
+    \end{enumerate}
+
+\Subsection{TextCNN}
+
+TextCNN использует 1D свертки для обработки последовательностей. Сначала последовательность преобразуется в последовательность эмбеддингов, а над ней применяется свертка:
+\[
+w_1, \dots, w_L \longrightarrow 
+\begin{bmatrix}
+    \textcolor{orange}{\fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, v_1$ \end{minipage}}} \\
+    \textcolor{orange}{\fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, v_2$ \end{minipage}}} \\
+    \dots  \dots  \dots \dots \\
+    \textcolor{orange}{\fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, v_K$ \end{minipage}}} \\
+    \fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, v_{K+1}$ \end{minipage}} \\
+    \dots  \dots  \dots \dots \\
+    \dots  \dots  \dots \dots \\
+    \fbox{\begin{minipage}{0,15\textwidth} $\quad \quad \,\,\, v_{L}$ \end{minipage}} \\
+\end{bmatrix} \bigg\downarrow \quad v_i \in \R^d \quad \Leftarrow \text{ свертка с ядром } K
+\]
+
+Таким образом, из входа размера $d_{\text{in}} \times L_{\text{in}}$ свертка выдает $d_{\text{out}} \times L_{\text{out}}$, где как и в картинках $d_{\text{out}}$ является гиперпараметром, а $L_{\text{out}}$ зависит от паддинга, страйда и так далее. \\
+
+Проблема в том, что для обучения батчами последовательности должны быть одинаковой длины, а это не так. Для этого вводится специальный токен $\langle \text{PAD} \rangle$ (обычно нулевой вектор), с помощью которого все последовательности эмбеддингов добиваются до длины самой длинной последовательности в батче. \\
+
+При этом в CNN обычно перед линейным слоем делается какой-нибудь AveragePooling, но в случае TextCNN этот пулинг должен быть с учетом длин последовательностей внутри батча, не учитывая паддинг, иначе получится что-то странное.
+
+\end{document}
