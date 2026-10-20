@@ -38,6 +38,7 @@
 3. Операция свертки: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-03-cnn.ipynb)
 4. Сверточные архитектуры: [папка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-04-unet)
 5. Детекция Faster R-CNN и YOLOv8: [папка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/232/seminar-05-cv.ipynb)
+6. BPE, Unigram, Word2Vec: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/232/seminar-06-w2v.ipynb)
 
 ## Маленькие домашние задания
 
