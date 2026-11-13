@@ -31,6 +31,7 @@
 7. Токенизация, эмбеддинги: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-07-embeddings.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-07-embeddings.pdf)
 8. Рекуррентные нейронные сети: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-08-rnn.pdf)
 9. Архитектура трансформера: [слайды](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-09-transformer.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-09-transformer.pdf)
+10. Оптимизации для применения нейронных сетей: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-12-opt-inference.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-12-opt-inference.pdf)
 
 ## Семинары
 0. Введение в библиотеку PyTorch. Автоматическое дифференцирование: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-00-intro.ipynb)
@@ -40,6 +41,8 @@
 4. Сверточные архитектуры: [папка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-04-unet)
 5. Детекция Faster R-CNN и YOLOv8: [папка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/232/seminar-05-cv.ipynb)
 6. BPE, Unigram, Word2Vec: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/232/seminar-06-w2v.ipynb)
+7. Language models, image captioning: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-07-rnn.ipynb)
+8. Архитектура трансформера: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-08-transformer.ipynb)
 
 ## Маленькие домашние задания
 
