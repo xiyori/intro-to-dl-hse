@@ -39,8 +39,8 @@
 2. Оптимизация нейронных сетей (SGD/Adam/AdamW, SAM, SWA): [ноутбук](seminars/242/seminar-02-optimization.ipynb)
 3. Операция свертки: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-03-cnn.ipynb)
 4. Сверточные архитектуры: [папка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-04-unet)
-5. Детекция Faster R-CNN и YOLOv8: [папка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/232/seminar-05-cv.ipynb)
-6. BPE, Unigram, Word2Vec: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/232/seminar-06-w2v.ipynb)
+5. Детекция Faster R-CNN и YOLOv8: [папка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-05-cv.ipynb)
+6. BPE, Unigram, Word2Vec: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-06-w2v.ipynb)
 7. Language models, image captioning: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-07-rnn.ipynb)
 8. Архитектура трансформера: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-08-transformer.ipynb)
 
@@ -55,3 +55,4 @@
 
 1. Полносвязные нейронные сети: [ссылка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/homeworks-theory/thw-01-mlp.pdf)
 2. Сверточные нейронные сети: [ссылка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/homeworks-theory/thw-02-cnn.pdf)
+3. Сверточные нейронные сети: [ссылка](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/homeworks-theory/thw-03-nlp.pdf)
