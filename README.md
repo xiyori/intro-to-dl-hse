@@ -15,7 +15,7 @@
 ## Полезные ссылки
 
 * [Вики-страничка](http://wiki.cs.hse.ru/Глубинное_обучение_1_26/27)
-* [Таблица с оценками](???)
+* [Таблица с оценками](https://docs.google.com/spreadsheets/d/1UbKiL26ibgxrnt81BKDD7GDDPsdtpAswopmM7m_Kkjo)
 * [Плейлист с записями занятий](https://disk.360.yandex.ru/d/tDPyxiB318YVCw)
 
 ## Лекции
@@ -32,6 +32,7 @@
 8. Рекуррентные нейронные сети: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-08-rnn.pdf)
 9. Архитектура трансформера: [слайды](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-09-transformer.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-09-transformer.pdf)
 10. Оптимизации для применения нейронных сетей: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-12-opt-inference.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-12-opt-inference.pdf)
+11. Self-supervised learning, BERT, SimCLR: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-11-self-supervised.pdf)
 
 ## Семинары
 0. Введение в библиотеку PyTorch. Автоматическое дифференцирование: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-00-intro.ipynb)
@@ -43,6 +44,7 @@
 6. BPE, Unigram, Word2Vec: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-06-w2v.ipynb)
 7. Language models, image captioning: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-07-rnn.ipynb)
 8. Архитектура трансформера: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-08-transformer.ipynb)
+9. Оптимизация нейросетей: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-09-distillation)
 
 ## Маленькие домашние задания
 
