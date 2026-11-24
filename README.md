@@ -33,6 +33,7 @@
 9. Архитектура трансформера: [слайды](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-09-transformer.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-09-transformer.pdf)
 10. Оптимизации для применения нейронных сетей: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-12-opt-inference.pdf), [конспект (old)](https://github.com/xiyori/intro-to-dl-hse/blob/2025-2026/lecture-latex/notes-12-opt-inference.pdf)
 11. Self-supervised learning, BERT, SimCLR: [доска](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-11-self-supervised.pdf)
+12. Трансформеры для компьютерного зрения: [слайды](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/lecture-notes/notes-12-vit.pdf)
 
 ## Семинары
 0. Введение в библиотеку PyTorch. Автоматическое дифференцирование: [ноутбук](https://github.com/xiyori/intro-to-dl-hse/blob/2026-2027/seminars/242/seminar-00-intro.ipynb)
