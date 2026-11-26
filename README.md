@@ -51,6 +51,7 @@
 
 1. Автоматическое дифференцирование и полносвязные нейронные сети: [ссылка](https://github.com/xiyori/intro-to-dl-hse/tree/2026-2027/homeworks-small/shw-01-mlp)
 2. Сверточный классификатор: [ссылка](https://github.com/xiyori/intro-to-dl-hse/tree/2026-2027/homeworks-small/shw-02-cnn.ipynb)
+3. LoRA и языковые модели: [ссылка](https://github.com/xiyori/intro-to-dl-hse/tree/2025-2026/homeworks-small/shw-03-lora.ipynb) 
 
 ## Теоретические домашние задания
 
